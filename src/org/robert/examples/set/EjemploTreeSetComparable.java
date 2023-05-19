@@ -2,6 +2,7 @@ package org.robert.examples.set;
 
 import org.robert.examples.modelo.Alumno;
 
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -19,6 +20,20 @@ public class EjemploTreeSetComparable {
         sa.add(new Alumno("Juano", 5));
         sa.add(new Alumno("Zeus", 9));
         System.out.println(sa);
+        /*Formas de iterar un set*/
+        System.out.println("Iterando usando un foreach");
+        for (Alumno a : sa) {
+            System.out.println(a.getNombre());
+        }
+        System.out.println("iternado usando while y Iterator");
+        Iterator<Alumno> it = sa.iterator();
+        while (it.hasNext()){
+            Alumno a = it.next();
+            System.out.println(a.getNombre());
+        }
+        System.out.println("Iterando usando Stream foreach function lambda");
+        sa.forEach(a -> System.out.println(a.getNombre()));
+        sa.forEach(System.out::println);//optimizado imprimer nota y jnombre
         System.out.println("***************Ordena por nombre no coge valores repetidos por nombre***********************");
         //se ordena por nombre de mayor a menor
         Set<Alumno> san = new TreeSet<>((a, b) -> b.getNombre().compareTo(a.getNombre()));
